@@ -31,7 +31,7 @@
                
                      <li class="{{ isActiveRoute('dashboard') }}">
                 <a href="/course_detail">
-                                    <em class="icon-layers"></em>
+                  <em class="icon-grid"></em>
 
                   <span>Course</span>
                 </a>

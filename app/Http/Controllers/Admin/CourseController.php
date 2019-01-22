@@ -42,8 +42,12 @@ class CourseController extends Controller
      */
     public function store(Request $request)
     {
+         
      if ( Auth::user()->role == "Admin" ){
-
+$this->validate($request, [
+            'name' => 'required|unique:courses'
+           
+        ]);
         $data=new Course;
         $data->name=$request->name;
         $data->save();
@@ -87,7 +91,10 @@ class CourseController extends Controller
      */
     public function update(Request $request, $id)
     {                if ( Auth::user()->role == "Admin" ){
-
+ $this->validate($request, [
+            'name' => 'required|unique:courses'
+           
+        ]);
          $data=Course::find($id);
         $data->name=$request->name;
         $data->save();

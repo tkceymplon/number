@@ -18,10 +18,13 @@
 
 
           <div class="input-group mb-3" style="margin-top: 30px;">
-            <div class="input-group-prepend">
-              
-            </div>
-            <input type="text" class="form-control" placeholder="Enter your Acc_year....." name="name" >
+           
+            <input type="text" class="form-control" placeholder="Enter your Acc_year....." name="acc_year" >
+             @if ($errors->has('name'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('name') }}</strong>
+                                    </span>
+                                @endif
           </div>
            
 

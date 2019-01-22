@@ -19,6 +19,11 @@
              
             </div>
             <input type="text" class="form-control" placeholder="" value="{{$datas->acc_year}}" name="name" >
+               @if ($errors->has('name'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('name') }}</strong>
+                                    </span>
+                                @endif
           </div>
                   
 

@@ -48,9 +48,12 @@ class StudentController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {  
+    {   
 if ( Auth::user()->role == "Admin" ){
-
+ $this->validate($request, [
+            'reg_no' => 'required|unique:students'
+           
+        ]);
     for ($i=0; $i < sizeof($request->name); $i++) { 
 
    
@@ -119,7 +122,10 @@ if ( Auth::user()->role == "Admin" ){
      */
     public function update(Request $request, $id)
     {                if ( Auth::user()->role == "Admin" ){
-
+ $this->validate($request, [
+            'name' => 'required|unique:students'
+           
+        ]);
         $data=Student::find($id);
         $data->name=$request->name;
         $data->reg_no=$request->reg_no;

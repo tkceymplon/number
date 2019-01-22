@@ -39,13 +39,21 @@ class AccadamicyearController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {                if ( Auth::user()->role == "Admin" ){
 
+    {           
+
+       if ( Auth::user()->role == "Admin" ){
+  $this->validate($request, [
+            'acc_year' => 'required|unique:accadamicyears'
+           
+        ]);
         $data=new Accadamicyear;
-        $data->acc_year=$request->name;
+        $data->acc_year=$request->acc_year;
              $data->save();
-             return redirect('/acc_year');
+                              return redirect('/acc_year');
+
     }
+
 }
 
     /**
@@ -89,7 +97,10 @@ class AccadamicyearController extends Controller
     public function update(Request $request, $id)
     {
                         if ( Auth::user()->role == "Admin" ){
-
+ $this->validate($request, [
+            'acc_year' => 'required|unique:accadamicyears'
+           
+        ]);
          $data=Accadamicyear::find($id);
         $data->acc_year=$request->name;
         $data->save();

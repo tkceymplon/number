@@ -30,14 +30,13 @@
                 </li>
               <li class="{{ isActiveRoute('dashboard') }}">
                 <a href="/course">
-                  <div class="float-right badge badge-success">3</div>
                   <em class="icon-speedometer"></em>
                   <span>Course</span>
                 </a>
               </li>
               <li class=" ">
                 <a href="/acc_year" title="Widgets">
-                  <div class="float-right badge badge-success">30</div>
+                  <!-- <div class="float-right badge badge-success">30</div> -->
                   <em class="icon-grid"></em>
                   <span>Academic Year</span>
                 </a>
@@ -55,35 +54,7 @@
                 </a>
               </li>
 
-              <li class="{{ isActiveRoute('user') }} {{ isActiveRoute('permission') }} {{ isActiveRoute('role') }}">
-                <a href="#user-control" title="User Control" data-toggle="collapse">
-                  <em class="icon-chemistry"></em>
-                  <span>User Control</span>
-                </a>
-                <ul class="sidebar-nav sidebar-subnav collapse {{ isActiveRoute('user') }} {{ isActiveRoute('permission') }} {{ isActiveRoute('role') }}" id="user-control">
-                  <li class="sidebar-subnav-header">User Control</li>
-                  <li class="{{ isActiveRoute('permission') }}">
-                    <a href="{{route('permission.index')}}" title="Permission">
-                      <span>Permission</span>
-                    </a>
-                  </li>
-
-                  <li class="{{ isActiveRoute('role') }}">
-                    <a href="{{route('role.index')}}" title="Role">
-                      <span>Role</span>
-                    </a>
-                  </li>
-
-                  <li class="{{ isActiveRoute('user') }}">
-                    <a href="{{route('user.index')}}" title="User">
-                      <span >User</span>
-                    </a>
-                  </li>
-                
-
-                   
-                </ul>
-              </li>
+     
 
 
         
