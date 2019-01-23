@@ -40,18 +40,18 @@ class SubjectController extends Controller
      */
     public function store(Request $request)
     {                 
-        // for ($i=0; $i < sizeof($request->subject); $i++) { 
-        // $data=new Subject;
-        // $data->course_id=$request->course;
-        // $data->level=$request->level;
-        // $data->semi=$request->semi;
-        // $data->subject_name=$request->subject[$i];
-        // $data->subject_code=$request->code[$i];
-        // $data->save();
+         for ($i=0; $i < sizeof($request->subject); $i++) {
+         $data=new Subject;
+         $data->course_id=$request->course;
+         $data->level=$request->level;
+         $data->semi=$request->semi;
+         $data->subject_name=$request->subject[$i];
+         $data->subject_code=$request->code[$i];
+         $data->save();
 
-        // }
-              //  return redirect('/course'); 
-        return $request;
+         }
+                return redirect('/course');
+       // return $request;
     
 }
     /**

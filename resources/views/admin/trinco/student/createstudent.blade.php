@@ -15,6 +15,8 @@
     </script>
 <div class="content-heading">
     <div> Students </div>
+    <a class="btn btn-default" href="/student"> <i class="ion-ios-arrow-thin-left"></i> Back</a>
+
 </div>
  
 <div class="card card-default card-demo" id="cardChart9">
@@ -45,9 +47,9 @@
               <label class="input-group-text" for="inputGroupSelect01" style="width: 100px;">Reg_No</label>
             </div>
             <input type="text" class="form-control" placeholder="Enter Reg Number " name="reg_no[]" >
-           @if ($errors->has('reg_no'))
+           @if ($errors->has('reg_no[]'))
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('reg_no') }}</strong>
+                                        <strong>{{ $errors->first('reg_no[]') }}</strong>
                                     </span>
                                 @endif
           </div>
@@ -66,7 +68,7 @@
           <div class="input-group-prepend">
             <label class="input-group-text" for="inputGroupSelect01" style="width: 100px;">Course</label>
           </div>
-          <select class="custom-select" id="inputGroupSelect01" name="course[]">
+          <select class="custom-select" id="inputGroupSelect01" name="course[]" >
           @foreach($course as $cour)
           <option value="{{$cour->id}}">{{$cour->name}}</option>
           @endforeach
