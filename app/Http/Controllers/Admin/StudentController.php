@@ -161,32 +161,32 @@ class StudentController extends Controller
     $persan=[];
     $i=0;
      foreach ($sub as $key) {
-         
-     if ($key!=null&& $user!=null) {
 
-     $per=Attendance::where('student_id',$user->id)->where('subject_id',$key->id)->count();
-     $pertk=Attendance::where('student_id',$user->id)->where('subject_id',$key->id)->sum('hour');
-     $hou=Hour::where('subject_id',$key->id)->first();
-if ($hou != null) {
+         if ($key != null && $user != null) {
 
-
-     $suba[$i]=$key->subject_name;
+             $per = Attendance::where('student_id', $user->id)->where('subject_id', $key->id)->count();
+             $pertk = Attendance::where('student_id', $user->id)->where('subject_id', $key->id)->sum('hour');
+             $hou = Hour::where('subject_id', $key->id)->first();
+             if ($hou != null) {
 
 
-    $persan[$i]=($pertk/$hou->hour)*100;
-    $i++;
-}
-    // $user_info =Attendance::select('subject_id',
-    //  DB::raw('count(*) as total'))
-    //              ->groupBy('subject_id')
-    //              ->where("student_id",$user->id)
-    //              ->get();  
+                 $suba[$i] = $key->subject_name;
 
-}
 
+                 $persan[$i] = ($pertk / $hou->hour) * 100;
+                 $i++;
+             }
+             // $user_info =Attendance::select('subject_id',
+             //  DB::raw('count(*) as total'))
+             //              ->groupBy('subject_id')
+             //              ->where("student_id",$user->id)
+             //              ->get();
+
+         }
+     }
     return  view('Admin/trinco/student/student',compact('suba','persan'));
     
-}
+
 }
 public function stushow()
 {
