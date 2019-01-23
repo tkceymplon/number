@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Course extends Model
 {
+	protected $fillable = ['name'];
    public function subjects()
     {
 return $this->hasMany('App\Models\Subject');

@@ -14,11 +14,10 @@ class AccadamicyearController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {                if ( Auth::user()->role == "Admin" ){
-
+    {               
          $datas=Accadamicyear::get();
         return view('Admin/trinco/acc_year/index',compact('datas'));
-       }}
+       }
 
     /**
      * Show the form for creating a new resource.
@@ -26,11 +25,10 @@ class AccadamicyearController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {                if ( Auth::user()->role == "Admin" ){
-
+    {            
           $course=Accadamicyear::get();
                         return view('Admin/trinco/acc_year/createyear',compact('course'));
-    }}
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -42,17 +40,15 @@ class AccadamicyearController extends Controller
 
     {           
 
-       if ( Auth::user()->role == "Admin" ){
   $this->validate($request, [
             'acc_year' => 'required|unique:accadamicyears'
            
         ]);
-        $data=new Accadamicyear;
-        $data->acc_year=$request->acc_year;
-             $data->save();
+           Accadamicyear::create($request->all());
+
                               return redirect('/acc_year');
 
-    }
+    
 
 }
 
@@ -78,13 +74,12 @@ class AccadamicyearController extends Controller
 
      */
     public function edit($id)
-    {                if ( Auth::user()->role == "Admin" ){
-
+    {            
        //  $data=$accadamicyear;
         $datas=Accadamicyear::find($id);
         return view('Admin/trinco/acc_year/edityear',compact('datas'));
        // return $accadamicyear;
-      }
+      
 }
 
     /**
@@ -96,17 +91,15 @@ class AccadamicyearController extends Controller
      */
     public function update(Request $request, $id)
     {
-                        if ( Auth::user()->role == "Admin" ){
- $this->validate($request, [
+  $this->validate($request, [
             'acc_year' => 'required|unique:accadamicyears'
            
         ]);
-         $data=Accadamicyear::find($id);
-        $data->acc_year=$request->name;
-        $data->save();
+Accadamicyear::find($id)->update($request->all());
+
         return redirect('/acc_year'); 
       }
-  }
+  
 
     /**
      * Remove the specified resource from storage.
@@ -116,11 +109,10 @@ class AccadamicyearController extends Controller
      */
     public function destroy($id)
     {
-                        if ( Auth::user()->role == "Admin" ){
 
          $data=Accadamicyear::find($id);
         $data->delete();
         return redirect('/acc_year'); 
-      }
+      
   }
 }

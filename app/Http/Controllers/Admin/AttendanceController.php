@@ -22,14 +22,13 @@ class AttendanceController extends Controller
      */
     public function index()
     {
-                        if ( Auth::user()->role == "Admin" ){
 
-        $year=Accadamicyear::get();
-        $course=Course::get();
-      }  return view('Admin/trinco/attendance/attandance',compact('year','course'));
+        $year = Accadamicyear::get();
+        $course = Course::get();
+        return view('Admin/trinco/attendance/attandance', compact('year', 'course'));
+
 
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -48,8 +47,7 @@ class AttendanceController extends Controller
      */
     public function store(Request $request)
     {
-                      if ( Auth::user()->role == "Admin" ){
-
+                 
  for ($i=0; $i < sizeof($request->option); $i++) { 
         $data=new Attendance;
         $data->student_id=$request->option[$i];
@@ -60,7 +58,7 @@ class AttendanceController extends Controller
 
         }
 return redirect('/attendance');
-    }}
+    }
 
     /**
      * Display the specified resource.
@@ -108,15 +106,13 @@ public function destroy($id)
     }
 
 public function storest(Request $request)
-    {                if ( Auth::user()->role == "Admin" ){
-
+    {              
         $data=Course::find($request->course)->subjects;
         return view('Admin/trinco/attendance/sub',compact('data','request'));
        // return $request->course;  
-    }}
+    }
 public function showstudent(Request $request)
-    {                 if ( Auth::user()->role == "Admin" ){
-  
+    {          
         $atta = Hour::where('subject_id', '=', $request->subject)->first();
 if ($atta === null) {
   
@@ -140,25 +136,21 @@ else
         $subject=Subject::find($request->subject);
         $datas=Accadamicyear::find($request->year)->students->where('course_id',$request->course);
     return view('Admin/trinco/attendance/createattendance',compact('datas','year','course','subject','request'));
-    }
+    
 }
 public function showatt()
     {  
-                    if ( Auth::user()->role == "Admin" ){
-
        
          $year=Accadamicyear::get();
         $subject=Subject::get();
     return view('Admin/trinco/attendance/viewshowatt',compact('year','subject'));
     }
 
-}
+
         
 public function viewatt(Request $request)
     { 
-                if ( Auth::user()->role == "Admin" ){
-
-
+             
     $datas = DB::table('attendances')
             ->join('students', 'students.id', '=', 'attendances.student_id')
             ->join('subjects', 'subjects.id', '=', 'attendances.subject_id')
@@ -187,7 +179,7 @@ else{
 
     }       
 
-    }
+    
 }
 
 }

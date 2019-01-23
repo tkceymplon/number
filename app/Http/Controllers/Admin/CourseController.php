@@ -17,10 +17,9 @@ class CourseController extends Controller
 
     public function index()
     {
-                if ( Auth::user()->role == "Admin" ){
-
+              
         $datas=Course::get();
-        return view('Admin/trinco/course/index',compact('datas'));}
+        return view('Admin/trinco/course/index',compact('datas'));
     }
 
     /**
@@ -29,10 +28,9 @@ class CourseController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {                if ( Auth::user()->role == "Admin" ){
-
+    {             
         return view('Admin/trinco/course/createcourse');
-    }
+    
 }
     /**
      * Store a newly created resource in storage.
@@ -43,17 +41,14 @@ class CourseController extends Controller
     public function store(Request $request)
     {
          
-     if ( Auth::user()->role == "Admin" ){
 $this->validate($request, [
             'name' => 'required|unique:courses'
            
         ]);
-        $data=new Course;
-        $data->name=$request->name;
-        $data->save();
+         Course::create($request->all());
+    
         return redirect('/course');
     }
-}
     /**
      * Display the specified resource.
      *
@@ -62,11 +57,9 @@ $this->validate($request, [
      */
     public function show($id)
     {
-    if ( Auth::user()->role == "Admin" ){
-
-        $course=Course::find($id);
+       $course=Course::find($id);
         return view('Admin/trinco/subject/createsubject',compact('course'));
-    }
+    
 }
     /**
      * Show the form for editing the specified resource.
@@ -76,11 +69,10 @@ $this->validate($request, [
      */
     public function edit($id)
     {
-                        if ( Auth::user()->role == "Admin" ){
-
+                    
         $data=Course::find($id);
         return view('Admin/trinco/course/editcourse',compact('data'));
-    }}
+    }
 
     /**
      * Update the specified resource in storage.
@@ -90,15 +82,13 @@ $this->validate($request, [
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {                if ( Auth::user()->role == "Admin" ){
- $this->validate($request, [
+    {           $this->validate($request, [
             'name' => 'required|unique:courses'
            
         ]);
-         $data=Course::find($id);
-        $data->name=$request->name;
-        $data->save();
-        return redirect('/course');    }}
+         Course::find($id)->update($request->all());
+        
+        return redirect('/course');    }
 
     /**
      * Remove the specified resource from storage.
@@ -107,11 +97,10 @@ $this->validate($request, [
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {                if ( Auth::user()->role == "Admin" ){
-
+    {               
         $data=Course::find($id);
         $data->delete();
-        return redirect('/course');       } }
+        return redirect('/course');       } 
 
         public function showcourse()
     {

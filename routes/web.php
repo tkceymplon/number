@@ -17,7 +17,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::group(['middleware'=>'auth'],function(){
+Route::group(['middleware'=>['auth','admin']],function(){
 
  // if(Auth::check()){
  //        if ( Auth::user()->role == "Admin" ){
@@ -45,6 +45,9 @@ route::post('/att','Admin\AttendanceController@storest');
 route::post('/attant','Admin\AttendanceController@showstudent');
 route::post('/attview','Admin\AttendanceController@viewatt');
 route::get('/attantshow','Admin\AttendanceController@showatt'); 
+});
+
+Route::group(['middleware'=>'auth'],function(){
 
 route::get('/students','Admin\StudentController@stushow');
 route::get('/subject_detail/{id}','Admin\SubjectController@showstudentsub');

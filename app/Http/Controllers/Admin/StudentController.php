@@ -21,12 +21,11 @@ class StudentController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {                if ( Auth::user()->role == "Admin" ){
-
+    {              
                   $datas=Accadamicyear::get();
 
         return view('Admin/trinco/student/index',compact('datas'));
-       }}
+       }
 
     /**
      * Show the form for creating a new resource.
@@ -34,12 +33,11 @@ class StudentController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {                if ( Auth::user()->role == "Admin" ){
-
+    {            
           $year=Accadamicyear::get();
           $course=Course::get();
         return view('Admin/trinco/student/createstudent',compact('year','course'));
-       }}
+       }
 
     /**
      * Store a newly created resource in storage.
@@ -49,7 +47,6 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {   
-if ( Auth::user()->role == "Admin" ){
  $this->validate($request, [
             'reg_no' => 'required|unique:students'
            
@@ -75,7 +72,7 @@ if ( Auth::user()->role == "Admin" ){
     }
             return redirect('/student');
 
-    }
+    
 }
 
     /**
@@ -86,15 +83,14 @@ if ( Auth::user()->role == "Admin" ){
      */
     public function show($id)
     {
-                        if ( Auth::user()->role == "Admin" ){
-
+                     
          $data=Student::find($id);
          $year=Student::find($id)->accadamicyear;
                          $course=Student::find($id)->course;
 
        return view('Admin/trinco/student/showstudent',compact('data','year','course'));
   
-    }
+    
 }
     /**
      * Show the form for editing the specified resource.
@@ -103,14 +99,13 @@ if ( Auth::user()->role == "Admin" ){
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {                if ( Auth::user()->role == "Admin" ){
-
+    {               
                  $data=Student::find($id);
                 $year=Student::find($id)->accadamicyear;
                 $course=Student::find($id)->course;
                   $datas=Accadamicyear::get();
        return view('Admin/trinco/student/editstudent',compact('data','datas','year','course'));
-    }
+    
 }
 
     /**
@@ -121,7 +116,7 @@ if ( Auth::user()->role == "Admin" ){
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {                if ( Auth::user()->role == "Admin" ){
+    {               
  $this->validate($request, [
             'name' => 'required|unique:students'
            
@@ -134,7 +129,7 @@ if ( Auth::user()->role == "Admin" ){
         $data->accadamicyear_id=$request->year;
         $data->save();
         return redirect('/student/'.$id);    
-    }
+    
 }
     /**
      * Remove the specified resource from storage.
@@ -143,22 +138,20 @@ if ( Auth::user()->role == "Admin" ){
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {                if ( Auth::user()->role == "Admin" ){
-
+    {               
                 $data=Student::find($id);
                   $data->delete();
         return redirect('/student'); 
     }
      
-     }public function studentview(Request $request)
-    {                if ( Auth::user()->role == "Admin" ){
-
+     public function studentview(Request $request)
+    {              
                $datas=Accadamicyear::find($request->year)->students;
                $year=Accadamicyear::find($request->year);
         return view('Admin/trinco/student/studentview',compact('datas','year')); 
               
     }
-    }
+    
      public function stu(Request $request)
     {                
 
