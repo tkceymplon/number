@@ -18,7 +18,7 @@
             <div class="input-group-prepend">
              
             </div>
-            <input type="text" class="form-control" placeholder="" value="{{$datas->acc_year}}" name="name" >
+            <input type="text" class="form-control" placeholder="" value="{{$datas->acc_year}}" name="acc_year" >
                @if ($errors->has('name'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('name') }}</strong>
