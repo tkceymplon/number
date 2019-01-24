@@ -171,7 +171,7 @@ else{
             $present=$datas->count();
             $total=Subject::find($request->subject)->course;
             $id=$total->id;
-            $totalstudent=Student::where('course_id',$id)->count();
+            $totalstudent=Student::where('course_id',$id)->where('accadamicyear_id', $request->year)->count();
             $persantage=($present/$totalstudent)*100;
 
 

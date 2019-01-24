@@ -156,7 +156,7 @@ class StudentController extends Controller
     {                
 
      $user =Student::where('reg_no', $request->reg)->first();
-    $sub=Subject::where('level',$request->level)->where('semi',$request->semi)->get();
+    $sub=Subject::where('level',$request->level)->where('course_id',$user->course_id)->where('semi',$request->semi)->get();
     $suba=[];
     $persan=[];
     $i=0;
@@ -196,10 +196,9 @@ public function stushow()
 
 }
 public function stuattview()
-    {                if ( Auth::user()->role == "Admin" ){
-
+    {              
               // $user =Student::where('reg_no', $request->reg)->get();
         return view('Admin/trinco/student/studentattview');
-    }
+    
 
 }}
