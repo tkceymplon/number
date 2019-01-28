@@ -16,7 +16,7 @@
 });
     </script>
 <div class="content-heading">
-    <div>Users</div>
+    <div>Subject</div>
 </div>
  
 <div class="card card-default card-demo" id="cardChart9">

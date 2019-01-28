@@ -8,7 +8,7 @@
 @stop
 @section('content')
 <div class="content-heading">
-    <div>Users</div>
+    <div>Course</div>
 </div>
  
 <div class="card card-default card-demo" id="cardChart9">

@@ -63,10 +63,13 @@ class SubjectController extends Controller
     public function show($id)
     {                
         $course=Course::find($id);
-        $sub=Course::find($id)->subjects;
+        $sub=Course::find($id)->subjects->groupBy('level');
+         foreach ($sub as $group) {
+        $grouped[] =  $group->groupBy('semi');
+    }
        // $datas=Subject::where
-        return view('Admin/trinco/subject/index',compact('course','sub'));
-    
+        return view('Admin/trinco/subject/index',compact('course','grouped'));
+    //dd($grouped);
 }
     /**
      * Show the form for editing the specified resource.

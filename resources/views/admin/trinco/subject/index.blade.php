@@ -8,7 +8,7 @@
 @stop
 @section('content')
 <div class="content-heading">
-    <div>Users</div>
+    <div>Subject</div>
 </div>
  
 <div class="card card-default card-demo" id="cardChart9">
@@ -16,14 +16,16 @@
         <div class="float-right">
                 <a href="/course" class="btn btn-info btn-sm" data-toggle="tooltip" title="Add new Course"> back</a>
         </div>
-        <div class="card-title">List of Course</div>
+        <div class="card-title">List of Subject</div>
     </div>
     <div class="card-wrapper collapse show">
         <div class="card-body">
             <div class="table-responsive">
                 <table datatable  class="table display nowrap">
                     <thead>
-                            <tr>
+                    <th>Level</th>      
+                    <th>Semester</th>      
+                        
                   <th>Subject Name</th>
                   <th>Subject code</th>
                   <th></th>
@@ -32,29 +34,28 @@
                             </tr>
                         </thead>
                         <tbody>
-                                          @foreach($sub as $data)
+                                          @foreach($grouped as $data=>$name)
+                                          @foreach($name as $datas=>$tks)
+       
+ 
+                                    
+@foreach($tks as $tk)
 
          <tr>
+          <td> {{$tk->level}}</td>                 
+ <td> {{$tk->semi}}</td>
            <td>
-             {{$data->subject_name}}
+             {{$tk->subject_name}}
            </td>
             <td>
-             {{$data->subject_code}}
+             {{$tk->subject_code}}
            </td>
        
-           <td><a href="/subject/{{$data->id}}/edit"><i class="fa fa-edit"></i> Edit<a>
-</td>
-
-<td><form action="/subject/{{$data->id}}" method="post">
-  {{csrf_field()}}
-          {{method_field("delete")}}
- <button class="btn btn-sm btn-danger ajax-delete" data-set="tr" type="submit" onclick="return confirm('Do you want to delete?')">
-                        <i class="fas fa-trash-alt"></i>
-                      </button>  
-</form>
-</td>
+          
          </tr>
-         @endforeach                        </tbody>
+         @endforeach       
+         @endforeach       
+         @endforeach                   </tbody>
                 
                     </table>
             </div>

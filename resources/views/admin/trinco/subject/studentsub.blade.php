@@ -8,7 +8,7 @@
 @stop
 @section('content')
 <div class="content-heading">
-    <div>Users</div>
+    <div>Subject</div>
 </div>
  
 <div class="card card-default card-demo" id="cardChart9">
@@ -16,7 +16,7 @@
         <div class="float-right">
                 <a href="/course_detail" class="btn btn-info btn-sm" data-toggle="tooltip" title="Add new Course"> back</a>
         </div>
-        <div class="card-title">List of Course</div>
+        <div class="card-title">List of Subject</div>
     </div>
     <div class="card-wrapper collapse show">
         <div class="card-body">

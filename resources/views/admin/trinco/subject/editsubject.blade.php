@@ -4,12 +4,12 @@
       @extends('admin.template')
 @section('content')
 <div class="content-heading">
-    <div>Users</div>
+    <div>Subject</div>
 </div>
  
 <div class="card card-default">
     <div class="card-header">
-        <div class="card-title">Edit Course - {{ $data->name }}</div>
+        <div class="card-title">Edit Subject - {{ $data->subject_name }}</div>
     </div>
     <div class="card-wrapper collapse show">
         <div class="card-body">

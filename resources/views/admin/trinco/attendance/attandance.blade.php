@@ -46,7 +46,28 @@
 
           </select>
         </div>
-
+    <div class="input-group mb-3" style="margin-top: 15px;">
+            <div class="input-group-prepend">
+              <label class="input-group-text" for="inputGroupSelect01" style="width: 100px;">Level</label>
+            </div>
+           <select class="custom-select" id="inputGroupSelect01" name="level">
+          
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+         
+          </select> </div>
+           <div class="input-group mb-3" style="margin-top: 15px;">
+            <div class="input-group-prepend">
+              <label class="input-group-text" for="inputGroupSelect01" style="width: 100px;">Level</label>
+            </div>
+           <select class="custom-select" id="inputGroupSelect01" name="semi">
+          
+          <option value="1">1</option>
+          <option value="2">2</option>
+          
+          </select> </div>
           <div class="input-group mb-3" style="margin-top: 15px;">
             <div class="input-group-prepend">
               <label class="input-group-text" for="inputGroupSelect01" style="width: 100px;">Date</label>

@@ -44,7 +44,9 @@ route::resource('/attendance','Admin\AttendanceController');
 route::post('/att','Admin\AttendanceController@storest');
 route::post('/attant','Admin\AttendanceController@showstudent');
 route::post('/attview','Admin\AttendanceController@viewatt');
-route::get('/attantshow','Admin\AttendanceController@showatt'); 
+route::post('/editattview','Admin\AttendanceController@editatts');
+route::get('/attantshow','Admin\AttendanceController@showatt');
+
 });
 
 Route::group(['middleware'=>'auth'],function(){

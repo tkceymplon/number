@@ -7,10 +7,18 @@
 </div>
  
 <div class="card card-default card-demo" id="cardChart9">
-    <div class="card-header">
-        <div class="card-title">Create new user</div>
+    <div class="card-header"><center><h1>{{$year->acc_year}}  {{$subject->subject_name}} attendance details  </h1></center>
+        </div>
     </div>
-    <div class="card-wrapper collapse show">
+<form action="/editattview" method="post">
+    @csrf
+    <input type="hidden" value="{{$date}}" name="date">
+    <input type="hidden" value="{{$subject->id}}" name="subject">
+    <button type="submit"  class="btn btn-primary">Edit attendance</button>
+
+</form>
+
+<div class="card-wrapper collapse show">
         <div class="card-body">
             <div class="input-group mb-3" style="margin-top: 30px;">
           <div class="input-group-prepend">
@@ -102,11 +110,9 @@
           </div>
           <input type="text" class="form-control"  aria-label="Username" aria-describedby="basic-addon1" name="year" value="{{$persantage}}" readonly="">
         </div>
-        
-       
+ </form>
         </div>
     </div>
-</div>
 @stop
 
 

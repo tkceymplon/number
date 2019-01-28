@@ -91,8 +91,21 @@ return redirect('/attendance');
      */
     public function update(Request $request, $id)
     {
-        //
-    }
+ $affectedRows = Attendance::where('date', $request->date)->where('subject_id',$request->subject)->delete();
+
+          
+ for ($i=0; $i < sizeof($request->option); $i++) { 
+        $data=new Attendance;
+        $data->student_id=$request->option[$i];
+        $data->subject_id=$request->subject;
+        $data->hour=$request->time;
+        $data->date=$request->date;
+        $data->save();
+
+        }
+return redirect('/attantshow');  
+        return $request;
+  }
 
     /**
      * Remove the specified resource from storage.
@@ -107,7 +120,8 @@ public function destroy($id)
 
 public function storest(Request $request)
     {              
-        $data=Course::find($request->course)->subjects;
+        $data=Subject::where('level',$request->level)->where('course_id',$request->course)->where('semi',$request->semi)->get();
+        //return $data;;
         return view('Admin/trinco/attendance/sub',compact('data','request'));
        // return $request->course;  
     }
@@ -142,8 +156,42 @@ public function showatt()
     {  
        
          $year=Accadamicyear::get();
-        $subject=Subject::get();
+         $subject=Subject::get();
     return view('Admin/trinco/attendance/viewshowatt',compact('year','subject'));
+    }
+
+public function editatts(Request $request)
+  {
+
+$data=Attendance::where('date', $request->date)
+    ->where('subject_id', $request->subject)
+    ->get();
+
+$datas=Student::find($data->first()->student_id);
+
+     $year=Accadamicyear::find($datas->accadamicyear_id);
+      $subject=Subject::find($data->first()->subject_id);
+      $course=Course::find($datas->course_id);
+      $date=$data{0}->date;
+      $hour=$data{0}->hour;
+
+      $datasa = DB::table('attendances')
+          ->join('students', 'students.id', '=', 'attendances.student_id')
+          ->select('students.reg_no','students.name','students.id')
+          ->where('attendances.date',$date)
+          ->where('attendances.subject_id',$data->first()->subject_id)
+          ->get();
+
+      $stu = Student::
+          where('accadamicyear_id',$year->id)
+            ->where('course_id',$datas->course_id)
+            ->select('students.reg_no','students.name','students.id')
+
+          ->get();
+
+//if($stu->contains('name','thanus'))
+ return view('Admin/trinco/attendance/editatt',compact('year','subject','course','date','hour','datasa','stu'));
+//return $datasa;;
     }
 
 
