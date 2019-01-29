@@ -1,4 +1,4 @@
- @extends('admin.template')
+ @extends('admin.profile')
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -7,13 +7,14 @@
                 <div class="card-header">{{ __('Update') }}</div>
 
                 <div class="card-body">
-                    <form method="post" action="user/{{Auth::user()->id}}">
+                    <form method="post" action="/stuuser">
                           {{csrf_field()}}
                             {{method_field("put")}}
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
 
                             <div class="col-md-6">
+                                <input type="hidden" name="id" value="{{Auth::user()->id}}">
                                 <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{Auth::user()->name}}" required autofocus>
 
                                 @if ($errors->has('name'))
